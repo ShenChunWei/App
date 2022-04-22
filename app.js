@@ -41,6 +41,7 @@ scan_icon.onclick = function close() {
           html5QrCode.stop();
           stop_scan.style.display = "none";
           div.style.display = "none";
+          scan.style.display = 'none';
           button.style.display = "block";
           map.style.display = "block";
           if (decodedText == "https://success.com.tw") {
@@ -52,7 +53,7 @@ scan_icon.onclick = function close() {
 
         const config = {
           fps: 25,
-          aspectRatio: 1,
+          aspectRatio: 1.68,
           qrbox: {
             width: 250,
             height: 250
@@ -70,6 +71,7 @@ scan_icon.onclick = function close() {
           html5QrCode.stop();
           stop_scan.style.display = "none";
           div.style.display = "none";
+          scan.style.display = "none";
           button.style.display = "block";
           map.style.display = "block";
         };
