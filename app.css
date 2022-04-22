@@ -59,29 +59,26 @@ body {
   transform: translateX(-50%) translateY(-50%);
 }
 
-#success-top,
-#fail-top {
-  width: 100%;
-  height: 1vh;
-}
-
-#close {
-  cursor: pointer;
-  position: absolute;
-  right: 20px;
-}
-
 #success {
   display: none;
   background-image: url('./source/pop_up-09.png');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50%;
-  height: 25%;
+  width: 70%;
+  height: 35%;
   position: fixed;
   left: 50vw;
   top: 50vh;
   transform: translateX(-50%) translateY(-50%);
+}
+
+#pay{
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  bottom: 23%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #fail {
@@ -89,12 +86,21 @@ body {
   background-image: url('./source/pop_up-09.png');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50%;
-  height: 25%;
+  width: 70%;
+  height: 35%;
   position: fixed;
   left: 50vw;
   top: 50vh;
   transform: translateX(-50%) translateY(-50%);
+}
+
+#rescan{
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  bottom: 23%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #check_mark,
@@ -105,9 +111,8 @@ body {
 
 #success-content,
 #fail-content {
-  text-align: left;
-  margin-top: 8%;
-  margin-left: 15%;
+  text-align: center;
+  margin-top: 10%;
 }
 
 #top{

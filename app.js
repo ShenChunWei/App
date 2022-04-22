@@ -4,8 +4,9 @@ var map = document.getElementById("map");
 var close = document.getElementById("close-button");
 var scan_icon = document.getElementById("scan-icon");
 var success = document.getElementById("success");
-var success_close = document.getElementById("success-top");
-var fail_close = document.getElementById("fail-top");
+var fail = document.getElementById("fail");
+var pay = document.getElementById("pay");
+var rescan = document.getElementById("rescan");
 var scan = document.getElementById("scan");
 var stop_scan = document.getElementById("stop-scan");
 
@@ -13,11 +14,11 @@ function show() {
   div.style.display = "block";
 }
 
-success_close.onclick = function close() {
+pay.onclick = function close() {
   success.style.display = "none";
 };
 
-fail_close.onclick = function close() {
+rescan.onclick = function close() {
   fail.style.display = "none";
 };
 
