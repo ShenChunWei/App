@@ -1,0 +1,139 @@
+body {
+  background-color: #d5dbdb;
+}
+
+.btn-pop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #ffd475;
+  border-radius: 10px;
+  border: 0px;
+  zoom: 200%;
+  z-index: 9999;
+}
+
+#div-pop {
+  display: none;
+  background-color: #ffffe8;
+  border-radius: 10% 10% 0% 0%;
+  width: 100%;
+  height: 25%;
+  position: fixed;
+  bottom: 0;
+}
+
+.div-top {
+  width: 100%;
+  height: 8vh;
+}
+
+.bi-caret-down-fill {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 15px;
+  cursor: pointer;
+  float: right;
+}
+
+.div-content {
+  width: auto;
+  height: 200px;
+  text-align: left;
+  margin-left: 15%;
+}
+
+#scan-icon {
+  position: fixed;
+  bottom: 6vh;
+  right: 20vw;
+  cursor: pointer;
+}
+
+#map {
+  display: block;
+  position: fixed;
+  left: 50vw;
+  top: 20vh;
+  text-align: center;
+  font-size: 3rem;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#success-top,
+#fail-top {
+  width: 100%;
+  height: 1vh;
+}
+
+#close {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+
+#success,
+#fail {
+  display: none;
+  background-color: #ffd78c;
+  border-radius: 25px;
+  width: 50vw;
+  height: auto;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#success-content,
+#fail-content {
+  text-align: left;
+  margin-left: 15%;
+}
+
+#top{
+  background-image: url('./source/frame1-03.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 15%;
+  top: 0;
+  z-index: 9999;
+}
+#scan{
+  display: none;
+}
+#scan-content{
+  text-align: center;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 999;
+}
+
+#scan-scooter{
+  background-image: url('./source/scooter_scanremainder-08.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 20%;
+  height: 20%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 999;
+}
+
+#stop-scan {
+  display: none;
+  position: fixed;
+  margin-top: 10px;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
+#reader {
+  z-index: 999;
+}
