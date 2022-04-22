@@ -95,3 +95,4 @@ function ShowTime() {
   var s = NowDate.getSeconds();
   document.getElementById("showbox").innerHTML = h + "時" + m + "分" + s + "秒";
 }
+
