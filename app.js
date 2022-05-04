@@ -51,7 +51,7 @@ rescan.onclick = function fail_close() {
 
         const config = {
           fps: 25,
-          aspectRatio: 1.68,
+          aspectRatio: 0.465,
           qrbox: {
             width: 250,
             height: 250
@@ -108,7 +108,7 @@ scan_icon.onclick = function qrcode() {
 
         const config = {
           fps: 25,
-          aspectRatio: 1.68,
+          aspectRatio: 0.465,
           qrbox: {
             width: 250,
             height: 250
