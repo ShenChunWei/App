@@ -1,0 +1,34 @@
+{
+  "name": "preprocessor",
+  "version": "0.0.4",
+  "description": "preprocessor",
+  "scripts": {
+    "watch": "npx parcel watch parcel/index.pug --dist-dir dist/parcel/ --public-url ./ --no-source-maps",
+    "serv": "npx parcel parcel/index.pug --port 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbilab/web-tutorial.git"
+  },
+  "author": "Tien-Hao Chang <darby.chang@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbilab/web-tutorial/issues"
+  },
+  "homepage": "https://github.com/mbilab/web-tutorial#readme",
+  "keywords": [],
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "jquery": "^3.6.0",
+    "node-sass": "^7.0.1",
+    "parcel": "^2.5.0",
+    "@anduh/pug-cli": "^1.0.0-alpha8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.0",
+    "@parcel/transformer-pug": "2.5.0",
+    "@parcel/transformer-sass": "2.5.0"
+  }
+}
