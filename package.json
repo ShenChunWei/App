@@ -1,21 +1,23 @@
 {
-  "name": "preprocessor",
-  "version": "0.0.4",
-  "description": "preprocessor",
+  "name": "about_us",
+  "version": "1.0.0",
+  "description": "about_us",
   "scripts": {
-    "watch": "npx parcel watch parcel/index.pug --dist-dir dist/parcel/ --public-url ./ --no-source-maps",
-    "serv": "npx parcel parcel/index.pug --port 8080"
+    "compile_pug": "./node_modules/.bin/pug ./parcel/app.pug -o ./dist/parcel -P",
+    "compile_sass": "./node_modules/.bin/node-sass ./parcel/app.sass -o ./dist/parcel -p",
+    "watch": "parcel watch parcel/app.pug --dist-dir dist/parcel/ --public-url ./ ",
+    "server": "parcel parcel/app.pug --port 1515"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbilab/web-tutorial.git"
+    "url": "git+https://github.com/ShenChunWei/App.git"
   },
-  "author": "Tien-Hao Chang <darby.chang@gmail.com>",
+  "author": "Jin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mbilab/web-tutorial/issues"
+    "url": "https://github.com/ShenChunWei/App/issues"
   },
-  "homepage": "https://github.com/mbilab/web-tutorial#readme",
+  "homepage": "https://github.com/ShenChunWei/App#readme",
   "keywords": [],
   "dependencies": {
     "@babel/cli": "^7.17.6",
@@ -23,12 +25,14 @@
     "@babel/preset-typescript": "^7.16.7",
     "jquery": "^3.6.0",
     "node-sass": "^7.0.1",
-    "parcel": "^2.5.0",
-    "@anduh/pug-cli": "^1.0.0-alpha8"
+    "parcel": "^2.4.1",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
     "@parcel/transformer-pug": "2.5.0",
-    "@parcel/transformer-sass": "2.5.0"
+    "@parcel/transformer-sass": "2.5.0",
+    "pug": "^3.0.2",
+    "sass": "^1.50.1"
   }
 }
