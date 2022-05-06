@@ -1,6 +1,5 @@
 var div = document.getElementById("div-pop");
-var button = document.getElementById("button");
-var map = document.getElementById("map");
+var preloader = document.getElementById("preloader");
 var close = document.getElementById("close-button");
 var scan_icon = document.getElementById("scan-icon");
 var success = document.getElementById("success");
@@ -10,9 +9,13 @@ var rescan = document.getElementById("rescan");
 var scan = document.getElementById("scan");
 var stop_scan = document.getElementById("stop-scan");
 
-function show() {
+setTimeout(function(){
+  preloader.style.display = "none";
+},1000);
+
+setTimeout(function(){
   div.style.display = "block";
-}
+},6000);
 
 pay.onclick = function succes_close() {
   success.style.display = "none";
@@ -27,8 +30,6 @@ rescan.onclick = function fail_close() {
   Html5Qrcode.getCameras()
     .then((devices) => {
       if (devices && devices.length) {
-        //button.style.display = "none";
-        //map.style.display = "none";
         scan.style.display = "block";
         div.style.display = "none";
         stop_scan.style.display = "block";
@@ -40,8 +41,6 @@ rescan.onclick = function fail_close() {
           stop_scan.style.display = "none";
           div.style.display = "none";
           scan.style.display = 'none';
-          button.style.display = "block";
-          map.style.display = "block";
           if (decodedText == "https://success.com.tw") {
             success.style.display = "block";
           } else if (decodedText == "https://fail.com.tw") {
@@ -51,7 +50,7 @@ rescan.onclick = function fail_close() {
 
         const config = {
           fps: 25,
-          aspectRatio: 1.68,
+          aspectRatio: 0.465,
           qrbox: {
             width: 250,
             height: 250
@@ -70,13 +69,12 @@ rescan.onclick = function fail_close() {
           stop_scan.style.display = "none";
           div.style.display = "none";
           scan.style.display = "none";
-          button.style.display = "block";
-          map.style.display = "block";
         };
       }
     })
     .catch((err) => {
       // handle err
+      console.log('error')
     });
 };
 
@@ -97,8 +95,6 @@ scan_icon.onclick = function qrcode() {
           stop_scan.style.display = "none";
           div.style.display = "none";
           scan.style.display = 'none';
-          button.style.display = "block";
-          map.style.display = "block";
           if (decodedText == "https://success.com.tw") {
             success.style.display = "block";
           } else if (decodedText == "https://fail.com.tw") {
@@ -108,7 +104,7 @@ scan_icon.onclick = function qrcode() {
 
         const config = {
           fps: 25,
-          aspectRatio: 1.68,
+          aspectRatio: 0.465,
           qrbox: {
             width: 250,
             height: 250
@@ -127,20 +123,13 @@ scan_icon.onclick = function qrcode() {
           stop_scan.style.display = "none";
           div.style.display = "none";
           scan.style.display = "none";
-          button.style.display = "block";
-          map.style.display = "block";
         };
       }
     })
     .catch((err) => {
       // handle err
+      console.log('error')
     });
-};
-
-window.onclick = function close(e) {
-  if (e.target == div) {
-    div.style.display = "none";
-  }
 };
 
 function ShowTime() {
