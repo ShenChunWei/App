@@ -9,11 +9,8 @@ var pay = document.getElementById("pay");
 var rescan = document.getElementById("rescan");
 var scan = document.getElementById("scan");
 var stop_scan = document.getElementById("stop-scan");
-
-
-setTimeout(function(){
-  preloader.style.display = "none";
-},2000);
+var info = document.getElementById("info");
+var time = document.getElementById("time");
 
 setTimeout(function(){
   div.style.display = "block";
@@ -43,6 +40,20 @@ main_scan.onclick = function main_scan() {
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
             success.style.display = "block";
+            info.style.display = "block";
+            time.style.display = "block";
+
+            var temp = new Date();
+            function checktime(){
+                var now = new Date(),
+                    diff = new Date(now - temp);
+                document.getElementById("check-time").innerText = diff.Myformat();
+            }
+            Date.prototype.Myformat = function(){
+                return ("0"+this.getUTCMinutes()).slice(-2)+":"+("0"+this.getUTCSeconds()).slice(-2)
+            }
+            setInterval(checktime, 1000);
+
           } else if (decodedText == "https://fail.com.tw") {
             fail.style.display = "block";
           }
@@ -86,6 +97,7 @@ scan_icon.onclick = function qrcode() {
           scan.style.display = "block";
           stop_scan.style.display = "block";
         },2500);
+
         var cameraId = devices[0].id;
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
@@ -95,6 +107,20 @@ scan_icon.onclick = function qrcode() {
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
             success.style.display = "block";
+            info.style.display = "block";
+            time.style.display = "block";
+
+            var temp = new Date();
+            function checktime(){
+                var now = new Date(),
+                    diff = new Date(now - temp);
+                document.getElementById("check-time").innerText = diff.Myformat();
+            }
+            Date.prototype.Myformat = function(){
+                return ("0"+this.getUTCMinutes()).slice(-2)+":"+("0"+this.getUTCSeconds()).slice(-2)
+            }
+            setInterval(checktime, 1000);
+
           } else if (decodedText == "https://fail.com.tw") {
             fail.style.display = "block";
           }
@@ -140,6 +166,7 @@ rescan.onclick = function rescan() {
           scan.style.display = "block";
           stop_scan.style.display = "block";
         },2500);
+
         var cameraId = devices[0].id;
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
@@ -149,6 +176,20 @@ rescan.onclick = function rescan() {
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
             success.style.display = "block";
+            info.style.display = "block";
+            time.style.display = "block";
+
+            var temp = new Date();
+            function checktime(){
+                var now = new Date(),
+                    diff = new Date(now - temp);
+                document.getElementById("check-time").innerText = diff.Myformat();
+            }
+            Date.prototype.Myformat = function(){
+                return ("0"+this.getUTCMinutes()).slice(-2)+":"+("0"+this.getUTCSeconds()).slice(-2)
+            }
+            setInterval(checktime, 1000);
+
           } else if (decodedText == "https://fail.com.tw") {
             fail.style.display = "block";
           }
