@@ -109,7 +109,12 @@ body {
   margin-left: 5px;
 }
 
-#success-content, #fail-content {
+#success-content {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#fail-content {
   text-align: center;
   margin-top: 10%;
 }
@@ -218,8 +223,8 @@ body {
 }
 
 #preloader {
-  background-size: 18vh;
-  background-color: #00c0f6;
+  background: url(./source/load_main.gif) no-repeat center;
+  background-color: #fbfbfb;
   display: block;
   height: 100vh;
   width: 100vw;
@@ -228,8 +233,9 @@ body {
 }
 
 #NCKU_header {
-  color: white;
+  color: #00b4d8;
   font-size: 6vh;
+  font-weight: 800;
   text-align: center;
   position: relative;
   top: 50%;
@@ -249,15 +255,30 @@ body {
   top: 1.5%;
   background-color: transparent;
   border: none;
+  align-items: center;
 }
 
 .bi.bi-list {
-  align-items: center;
   font-size: 2rem;
+  color: black;
+  transform: rotate(0);
+  vertical-align: middle;
+}
+
+.rotated {
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
 }
 
 #user_button {
   position: absolute;
+}
+
+#seperate_user {
+  top: 5%;
 }
 
 .bg-light {
@@ -277,9 +298,9 @@ body {
   position: fixed;
   left: 0% !important;
   z-index: 1000000000000000100;
-  top: 11vh;
+  top: 9vh;
   background-color: white;
-  height: 80vh;
+  height: 92vh;
   width: 48vw;
   display: none;
 }

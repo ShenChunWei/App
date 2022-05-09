@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap")
+
 body
   background-color: #d5dbdb
   width: 390px
@@ -50,7 +52,7 @@ body
 
 #success
   display: none
-  background-image: url('./source/scan_popup_box-13.png')
+  background-image: url("./source/scan_popup_box-13.png")
   background-repeat: no-repeat
   background-size: contain
   width: 70%
@@ -65,14 +67,14 @@ body
   cursor: pointer
   color: white
   position: absolute
-  top: 52% 
+  top: 52%
   left: 50%
   transform: translateX(-50%)
   z-index: 999
 
 #fail
   display: none
-  background-image: url('./source/scan_popup_box-13.png')
+  background-image: url("./source/scan_popup_box-13.png")
   background-repeat: no-repeat
   background-size: contain
   width: 70%
@@ -96,12 +98,16 @@ body
   height: 25px
   margin-left: 5px
 
-#success-content, #fail-content
+#success-content
+  text-align: center
+  margin-top: 5%
+
+#fail-content
   text-align: center
   margin-top: 10%
 
 #top
-  background-image: url('./source/heading4 .png')
+  background-image: url("./source/heading4 .png")
   background-size: contain
   background-repeat: no-repeat
   position: fixed
@@ -123,7 +129,7 @@ body
   z-index: 999
 
 #scan-scooter
-  background-image: url('./source/scooter_scan_icon-12.png')
+  background-image: url("./source/scooter_scan_icon-12.png")
   background-size: contain
   background-repeat: no-repeat
   position: fixed
@@ -184,8 +190,6 @@ body
   right: 4%
   font-size: 1.5rem
 
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap")
-
 *
   font-family: 'Lato', sans-serif
   margin: 0
@@ -193,8 +197,8 @@ body
   box-sizing: border-box
 
 #preloader
-  background-size: 18vh
-  background-color: #00c0f6
+  background: url(./source/load_main.gif) no-repeat center
+  background-color: #fbfbfb
   display: block
   height: 100vh
   width: 100vw
@@ -202,8 +206,9 @@ body
   z-index: 99999
 
 #NCKU_header
-  color: white
+  color: #00b4d8
   font-size: 6vh
+  font-weight: 800
   text-align: center
   position: relative
   top: 50%
@@ -221,14 +226,26 @@ body
   top: 1.5%
   background-color: transparent
   border: none
+  align-items: center
 
 .bi.bi-list
-  align-items: center
   font-size: 2rem
+  color: black
+  transform: rotate(0)
+  vertical-align: middle
 
+.rotated
+  transform: rotate(90deg)
+  -ms-transform: rotate(90deg)
+  -moz-transform: rotate(90deg)
+  -webkit-transform: rotate(90deg)
+  -o-transform: rotate(90deg)
 
 #user_button
   position: absolute
+
+#seperate_user
+  top: 5%
 
 .bg-light
   background-color: transparent !important
@@ -241,24 +258,20 @@ body
   margin-top: 10px
   position: fixed
 
-#side_bar 
+#side_bar
   position: fixed
-  left: 0%!important
+  left: 0% !important
   z-index: 999999999999999999
-  top: 11vh
+  top: 9vh
   background-color: white
-  height: 80vh
+  height: 92vh
   width: 48vw
   display: none
-
 
 #main_row
   height: 92%
 
 #map
   border-radius: 40px
-  border-top-left-radius: 0px!important
-  border-top-right-radius: 0px!important
-  
-  //border: solid
-  //border-color: pink
+  border-top-left-radius: 0px !important
+  border-top-right-radius: 0px !important

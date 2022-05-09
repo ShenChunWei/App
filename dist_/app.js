@@ -4,6 +4,7 @@ var close = document.getElementById("close-button");
 var main_scan = document.getElementById("main-scan");
 var scan_icon = document.getElementById("scan-icon");
 var success = document.getElementById("success");
+var success_pop = document.getElementById("success-pop");
 var fail = document.getElementById("fail");
 var pay = document.getElementById("pay");
 var rescan = document.getElementById("rescan");
@@ -11,10 +12,17 @@ var scan = document.getElementById("scan");
 var stop_scan = document.getElementById("stop-scan");
 var info = document.getElementById("info");
 var time = document.getElementById("time");
+var end = document.getElementById("end");
+var success_content = document.getElementById("success-content");
+var start_loacation = '電機系館站';
+var end_loacation = '工設系館站';
 
 setTimeout(function(){
-  div.style.display = "block";
+  $('#div-pop').show('slow');
 },6000);
+
+document.getElementById("start-pop").textContent = '起始站點：'+ start_loacation;
+document.getElementById("end-pop").textContent = '目標站點：'+ end_loacation;
 
 pay.onclick = function succes_close() {
   success.style.display = "none";
@@ -39,6 +47,9 @@ main_scan.onclick = function main_scan() {
           stop_scan.style.display = "none";
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
+            document.getElementById("start").textContent = '起始站點：'+ start_loacation;
+            success_content.setAttribute("style", "margin-top:10%");
+            end.style.display = "none";
             success.style.display = "block";
             info.style.display = "block";
             time.style.display = "block";
@@ -106,6 +117,8 @@ scan_icon.onclick = function qrcode() {
           div.style.display = "none";
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
+            document.getElementById("start").textContent = '起始站點：'+ start_loacation;
+            document.getElementById("end").textContent = '目標站點：'+ end_loacation;
             success.style.display = "block";
             info.style.display = "block";
             time.style.display = "block";
@@ -175,6 +188,9 @@ rescan.onclick = function rescan() {
           div.style.display = "none";
           scan.style.display = 'none';
           if (decodedText == "https://success.com.tw") {
+            document.getElementById("start").textContent = '起始站點：'+ start_loacation;
+            success_content.setAttribute("style", "margin-top:10%");
+            end.style.display = "none";
             success.style.display = "block";
             info.style.display = "block";
             time.style.display = "block";

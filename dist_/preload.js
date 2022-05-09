@@ -13,6 +13,6 @@ window.addEventListener("load",  setTimeout(function() {
             clearInterval();
             loader.style.display = "none";
         }
-    }, 150);
+    }, 50);
     
-} , 1500))
+} , 2500))

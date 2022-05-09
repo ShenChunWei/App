@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--url : https://luffy.ee.ncku.edu.tw/~santaboi/NCKU-E_scooter-app/dist/parcel_app_new/app.html-->
+<!-- url : https://luffy.ee.ncku.edu.tw/~santaboi/NCKU-E_scooter-app/dist/parcel_app_new/app.html-->
 <html>
   <head>
     <title>APP</title>
@@ -19,36 +19,40 @@
         <button id="nav_toggle_button" type="button"><i class="bi bi-list"></i></button>
       </div>
       <div class="row" id="main_row">
-        <!--#side_bar.d-flex.flex-column.flex-shrink-0.p-3.bg-light(style='width: 280px;')-->
-        <div class="column" id="side_bar"><a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" href="/">
+        <!-- #side_bar.d-flex.flex-column.flex-shrink-0.p-3.bg-light(style='width: 280px;')-->
+        <div class="column" id="side_bar"><a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" id="user_button" href="/">
             <svg class="bi me-2" width="40" height="32">
               <use xlink:href="#bootstrap"></use>
-            </svg><span class="fs-4">Sidebar</span></a>
-          <hr>
+            </svg><span class="fs-4">Hi Jeff! </span></a>
+          <hr id="seperate_user">
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item"><a class="nav-link active" href="#" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#home"></use>
-                </svg>          Home</a></li>
+                </svg> Home</a></li>
             <li><a class="nav-link link-dark" href="#">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#speedometer2"></use>
-                </svg>          Dashboard</a></li>
+                </svg> Avatar</a></li>
             <li><a class="nav-link link-dark" href="#">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#table"></use>
-                </svg>          Orders</a></li>
+                </svg> Prebooking</a></li>
             <li><a class="nav-link link-dark" href="#">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#grid"></use>
-                </svg>          Products</a></li>
+                </svg> Leaderboard</a></li>
             <li><a class="nav-link link-dark" href="#">
                 <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#people-circle"></use>
-                </svg>          Customers</a></li>
+                </svg> Find Scooter</a></li>
+            <li><a class="nav-link link-dark" href="https://luffy.ee.ncku.edu.tw/~santaboi/NCKU-E_scooter-app/spin_wheel/daily.html">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#people-circle"></use>
+                </svg> Mission</a></li>
           </ul>
           <hr>
-          <div class="dropdown"><a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img class="rounded-circle me-2" src="https://github.com/mdo.png" alt="" width="32" height="32"><strong>mdo</strong></a>
+          <div class="dropdown"><a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img class="rounded-circle me-2" src="https://github.com/mdo.png" alt="" width="32" height="32"><strong>Jeff</strong></a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -65,7 +69,7 @@
     </div>
     <!-- p Try scrolling the rest of the page to see this option in action.-->
     <div id="reader"></div>
-    <!--#top-->
+    <!-- #top-->
     <div id="main-scan"></div>
     <div id="scan">
       <div id="scan-content">Please Scan the QR code<br>on the scooter</div>
@@ -75,16 +79,21 @@
     <div id="background-pop">
       <div id="div-pop">
         <div class="div-top"><i class="bi bi-caret-down-fill" id="close-button" style="font-size:25px;"></i></div>
-        <div class="div-content">是否需要租車？<br>課程：網際網路程式設計<br>教室：電機系館 令洋廳</div><img id="scan-icon" src="./source/shortcut_scanbutton-08.png" height="80px">
+        <div class="div-content">是否需要租車？<br>
+          <div id="start-pop">起始站點：</div>
+          <div id="end-pop">目標站點：</div>
+        </div><img id="scan-icon" src="./source/shortcut_scanbutton-08.png" height="80px">
       </div>
       <div id="success">
         <div id="success-content">Success <img id="check_mark" src="./source/scan_success_icon-10.png">
-          <div id="showbox"></div>租借地：電機系館<br>車號：A123456789<br>
+          <div id="showbox"></div>車號：A123456789<br>
+          <div id="start">起始站點：</div>
+          <div id="end">目標站點：</div>
         </div>
         <div id="pay">Confirm payment</div>
       </div>
       <div id="fail">
-        <div id="fail-content">Unsuccess <img id="error_mark" src="./source/scan_fail_icon-10.png"><br>此車已被借閱！<br>租借地：電機系館<br>車號：A123456789<br></div>
+        <div id="fail-content">Unsuccess <img id="error_mark" src="./source/scan_fail_icon-10.png"><br>掃描失敗<br>請重新嘗試!<br>車號：A123456789<br></div>
         <div id="rescan">ReScan</div>
       </div>
       <div id="info">
@@ -96,7 +105,8 @@
     <script src="index.js"></script>
     <script src="preload.js"></script>
     <script src="nav.js"></script>
-    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=&amp;callback=init_GMap&amp;v=weekly"></script>
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu-BASkqxhAYMOVu25daGmDr5_na6IAW4&amp;libraries=places&amp;callback=init_GMap&amp;v=weekly"></script>
+    <!-- script(async='' defer='' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu-BASkqxhAYMOVu25daGmDr5_na6IAW4&libraries=places&callback=initMap")-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.1/html5-qrcode.min.js"></script>
   </body>
