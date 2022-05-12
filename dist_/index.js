@@ -17,6 +17,10 @@ const ncku_bounds = {
 
 
 function init_GMap() {
+    /*for direction routing*/
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+
     const ncku = { lat: 22.996040, lng: 120.221030 };
     //center
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -103,7 +107,26 @@ function init_GMap() {
             },
         ],
         gestureHandling: "cooperative",
+        //mapTypeControl: false,
     });
+    
+
+    directionsRenderer.setMap(map);
+    setTimeout(() => {
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+    }, 3000);
+    /*************************************************style controler**********************************************/
+    //日後toggle style
+    //const styleControl = document.getElementById("style-selector-control");
+    //map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
+    //// Set the map's style to the initial value of the selector.
+    //const styleSelector = document.getElementById("style-selector");
+    //map.setOptions({ styles: styles[styleSelector.value] });
+    //// Apply new JSON when the user selects a different style.
+    //styleSelector.addEventListener("change", () => {
+    //  map.setOptions({ styles: styles[styleSelector.value] });
+    //});
+
 
     //******************************marker with messages******************************
     //日後enable json
@@ -126,87 +149,115 @@ function init_GMap() {
     });
 
 
+    
+    
 
-    new ClickEventHandler(map, ncku);
+    //new ClickEventHandler(map, ncku);
 }
 //poi testing ******************************************************************************************************
 function isIconMouseEvent(e) {
     return "placeId" in e;
 }
 
-class ClickEventHandler {
-    origin;
-    map;
-    directionsService;
-    directionsRenderer;
-    placesService;
-    infowindow;
-    infowindowContent;
-    constructor(map, origin) {
-        this.origin = origin;
-        this.map = map;
-        this.directionsService = new google.maps.DirectionsService();
-        this.directionsRenderer = new google.maps.DirectionsRenderer();
-        this.directionsRenderer.setMap(map);
-        this.placesService = new google.maps.places.PlacesService(map);
-        this.infowindow = new google.maps.InfoWindow();
-        this.infowindowContent = document.getElementById("infowindow-content");
-        this.infowindow.setContent(this.infowindowContent);
-        // Listen for clicks on the map.
-        this.map.addListener("click", this.handleClick.bind(this));
-    }
-    handleClick(event) {
-        console.log("You clicked on: " + event.latLng);
-        // If the event has a placeId, use it.
-        if (isIconMouseEvent(event)) {
-            console.log("You clicked on place:" + event.placeId);
-            // Calling e.stop() on the event prevents the default info window from
-            // showing.
-            // If you call stop here when there is no placeId you will prevent some
-            // other map click event handlers from receiving the event.
-            event.stop();
-            if (event.placeId) {
-                this.calculateAndDisplayRoute(event.placeId);
-                this.getPlaceInformation(event.placeId);
-            }
-        }
-    }
-    calculateAndDisplayRoute(placeId) {
-        const me = this;
 
-        this.directionsService
-            .route({
-                origin: this.origin,
-                destination: { placeId: placeId },
-                travelMode: google.maps.TravelMode.WALKING,
-            })
-            .then((response) => {
-                me.directionsRenderer.setDirections(response);
-            })
-            .catch((e) => window.alert("Directions request failed due to " + status));
-    }
-    getPlaceInformation(placeId) {
-        const me = this;
+/**********************************************direction routing**********************************************/
+            //ee22.996501, 120.222252
+            //22.999904, 120.215624
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    //const selectedMode = document.getElementById("mode").value;
 
-        this.placesService.getDetails({ placeId: placeId }, (place, status) => {
-            if (
-                status === "OK" &&
-                place &&
-                place.geometry &&
-                place.geometry.location
-            ) {
-                me.infowindow.close();
-                me.infowindow.setPosition(place.geometry.location);
-                me.infowindowContent.children["place-icon"].src = place.icon;
-                me.infowindowContent.children["place-name"].textContent = place.name;
-                me.infowindowContent.children["place-id"].textContent = place.place_id;
-                me.infowindowContent.children["place-address"].textContent =
-                    place.formatted_address;
-                me.infowindow.open(me.map);
-            }
-        });
-    }
+    directionsService
+        .route({
+            //origin: { lat: 37.77, lng: -122.447 },
+            //destination: { lat: 37.768, lng: -122.511 },
+            origin: { lat: 22.996501, lng: 120.222252 },
+            destination: { lat: 22.999904, lng: 120.215624 },
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            //travelMode: google.maps.TravelMode[selectedMode],
+        })
+        .then((response) => {
+            directionsRenderer.setDirections(response);
+        })
+        .catch((e) => window.alert("Directions request failed due to " + status));
 }
+/**********************************************direction routing**********************************************/
+
+
+//class ClickEventHandler {
+//    origin;
+//    map;
+//    directionsService;
+//    directionsRenderer;
+//    placesService;
+//    infowindow;
+//    infowindowContent;
+//    constructor(map, origin) {
+//        this.origin = origin;
+//        this.map = map;
+//        this.directionsService = new google.maps.DirectionsService();
+//        this.directionsRenderer = new google.maps.DirectionsRenderer();
+//        this.directionsRenderer.setMap(map);
+//        this.placesService = new google.maps.places.PlacesService(map);
+//        this.infowindow = new google.maps.InfoWindow();
+//        this.infowindowContent = document.getElementById("infowindow-content");
+//        this.infowindow.setContent(this.infowindowContent);
+//        // Listen for clicks on the map.
+//        this.map.addListener("click", this.handleClick.bind(this));
+//    }
+//    handleClick(event) {
+//        console.log("You clicked on: " + event.latLng);
+//        // If the event has a placeId, use it.
+//        if (isIconMouseEvent(event)) {
+//            console.log("You clicked on place:" + event.placeId);
+//            // Calling e.stop() on the event prevents the default info window from
+//            // showing.
+//            // If you call stop here when there is no placeId you will prevent some
+//            // other map click event handlers from receiving the event.
+//            event.stop();
+//            if (event.placeId) {
+//                this.calculateAndDisplayRoute(event.placeId);
+//                this.getPlaceInformation(event.placeId);
+//            }
+//        }
+//    }
+//    calculateAndDisplayRoute(placeId) {
+//        const me = this;
+//
+//        this.directionsService
+//            .route({
+//                origin: this.origin,
+//                destination: { placeId: placeId },
+//                travelMode: google.maps.TravelMode.WALKING,
+//            })
+//            .then((response) => {
+//                me.directionsRenderer.setDirections(response);
+//            })
+//            .catch((e) => window.alert("Directions request failed due to " + status));
+//    }
+//    getPlaceInformation(placeId) {
+//        const me = this;
+//
+//        this.placesService.getDetails({ placeId: placeId }, (place, status) => {
+//            if (
+//                status === "OK" &&
+//                place &&
+//                place.geometry &&
+//                place.geometry.location
+//            ) {
+//                me.infowindow.close();
+//                me.infowindow.setPosition(place.geometry.location);
+//                me.infowindowContent.children["place-icon"].src = place.icon;
+//                me.infowindowContent.children["place-name"].textContent = place.name;
+//                me.infowindowContent.children["place-id"].textContent = place.place_id;
+//                me.infowindowContent.children["place-address"].textContent =
+//                    place.formatted_address;
+//                me.infowindow.open(me.map);
+//            }
+//        });
+//    }
+//}
 //poi testing ******************************************************************************************************
 
 
@@ -395,10 +446,88 @@ function set_poly (map) {
 }
 
 
-//******************************current location***********************************
+const styles = {
+    default: [],
+    night: [
+        { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+        {
+            featureType: "administrative.locality",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#d59563" }],
+        },
+        {
+            featureType: "poi",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#d59563" }],
+        },
+        {
+            featureType: "poi.park",
+            elementType: "geometry",
+            stylers: [{ color: "#263c3f" }],
+        },
+        {
+            featureType: "poi.park",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#6b9a76" }],
+        },
+        {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [{ color: "#38414e" }],
+        },
+        {
+            featureType: "road",
+            elementType: "geometry.stroke",
+            stylers: [{ color: "#212a37" }],
+        },
+        {
+            featureType: "road",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#9ca5b3" }],
+        },
+        {
+            featureType: "road.highway",
+            elementType: "geometry",
+            stylers: [{ color: "#746855" }],
+        },
+        {
+            featureType: "road.highway",
+            elementType: "geometry.stroke",
+            stylers: [{ color: "#1f2835" }],
+        },
+        {
+            featureType: "road.highway",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#f3d19c" }],
+        },
+        {
+            featureType: "transit",
+            elementType: "geometry",
+            stylers: [{ color: "#2f3948" }],
+        },
+        {
+            featureType: "transit.station",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#d59563" }],
+        },
+        {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [{ color: "#17263c" }],
+        },
+        {
+            featureType: "water",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#515c6d" }],
+        },
+        {
+            featureType: "water",
+            elementType: "labels.text.stroke",
+            stylers: [{ color: "#17263c" }],
+        },
+    ],
+}
 
-//******************************marker with messages******************************
-//******************************marker with messages******************************
-
-//window.initMap = init_GMap;
-
+window.initMap = init_GMap;
