@@ -10,7 +10,7 @@ $(document).ready(function () {
             $('#nav_toggle_button').addClass('rotated')
             $('#side_bar').show('slow');
         } else {
-            $('.bi.bi-list').css('color', 'white');
+            //$('.bi.bi-list').css('color', 'white');
             $('#nav_toggle_button').removeClass('rotated')
             $('#side_bar').hide('slow');
         }
